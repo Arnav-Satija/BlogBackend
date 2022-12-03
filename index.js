@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const dbstring = process.env.DATABASE_URL;
-mongoose.connect(dbstring);
+mongoose.connect(dbstring, { dbName: 'server'});
 
 const db = mongoose.connection;
 
@@ -25,5 +25,5 @@ app.use(cors());
 app.use('/server',routes);
 
 app.listen(PORT,()=>{
-    console.log(`Server hosted on http://localhost:${PORT}/server`);
+    console.log(`Server hosted on http://localhost:${PORT}`);
 })
